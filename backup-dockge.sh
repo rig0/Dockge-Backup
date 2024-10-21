@@ -25,10 +25,16 @@ for dir in "$STACKS_DIR"/*; do
         # Get directory name without path
         dir_name=$(basename "$dir")
 
-        # Create tar.gz archive for each directory
-        tar -czf "$BACKUP_DIR/${dir_name}_${TIMESTAMP}.tar.gz" -C "$STACKS_DIR" "$dir_name"
+        # If the directory is "fireshare", exclude the "videos" folder from the archive
+        if [ "$dir_name" == "fireshare" ]; then
+            tar --exclude="$STACKS_DIR/$dir_name/videos" -czf "$BACKUP_DIR/${dir_name}_${TIMESTAMP}.tar.gz" -C "$STACKS_DIR" "$dir_name"
+        else
+            # Create tar.gz archive for each directory normally
+            tar -czf "$BACKUP_DIR/${dir_name}_${TIMESTAMP}.tar.gz" -C "$STACKS_DIR" "$dir_name"
+        fi
     fi
 done
+
 
 # Archive /opt/dockge directory
 if [ -d "$DOCKGE_DIR" ]; then
