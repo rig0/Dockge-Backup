@@ -40,9 +40,6 @@ chown -R "$USER:$USER" "$BACKUP_DIR"
 
 echo "Backup complete. Archives moved to $BACKUP_DIR, and ownership changed to $USER:$USER."
 
-# Get the IP address of the default interface
-ip_address=$(hostname -I | awk '{print $1}')
-
 # Call API to pick up
 curl --location 'https://backups.rigslab.com/backup' \
 --header "Content-Type: application/json" \
