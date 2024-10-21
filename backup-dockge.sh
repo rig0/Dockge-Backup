@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Load the .env file. ex.
-#BACKUP_API_TOKEN=
-#NAS_DIRECTORY=
-#BACKUP_DIR=
-#HOST=
-#USER=
-
 if [ -f "$(dirname "$0")/.env" ]; then
     export $(grep -v '^#' "$(dirname "$0")/.env" | xargs)
+fi
+
+# Check for required env variables
+if [[ -z "$BACKUP_API_TOKEN" || -z "$USER" || -z "$HOST" || -z "$BACKUP_DIR" || -z "$NAS_DIRECTORY" ]]; then
+    echo "Error: One or more required variables are not set."
+    exit 1
 fi
 
 # Set variables
