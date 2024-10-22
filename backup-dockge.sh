@@ -47,7 +47,10 @@ chown -R "$USER:$USER" "$BACKUP_DIR"
 echo "Backup complete. Archives moved to $BACKUP_DIR, and ownership changed to $USER:$USER."
 
 # Call API to pick up
-curl --location \"$API_URL/backup\" \
+ENDPOINT="/backup"
+FULL_URL="${API_URL}${ENDPOINT}"
+
+curl --location "$FULL_URL" \
 --header "Content-Type: application/json" \
 --header "Authorization: Bearer $API_TOKEN" \
 --data "{
