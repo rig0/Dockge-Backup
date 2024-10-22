@@ -24,7 +24,7 @@ HOST=IP-Address # IP address of local system where the API will fetch the backup
 USER=user # this user will have permission to the backup archives
 ```
 
-### Use `backup-dockge.sh` to back up Dockge data and Stacks data
+### Use `backup-dockge.sh` to back up Dockge and Stacks data
 ```bash
 sudo ./backup-dockge.sh
 ```
