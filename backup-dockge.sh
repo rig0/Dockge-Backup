@@ -6,7 +6,7 @@ if [ -f "$(dirname "$0")/.env" ]; then
 fi
 
 # Check for required env variables
-if [[ -z "$BACKUP_API_TOKEN" || -z "$USER" || -z "$HOST" || -z "$BACKUP_DIR" || -z "$NAS_DIRECTORY" ]]; then
+if [[ -z "$API_URL" || -z "$API_TOKEN" ||-z "$USER" || -z "$HOST" || -z "$BACKUP_DIR" || -z "$NAS_DIRECTORY" ]]; then
     echo "Error: One or more required variables are not set."
     exit 1
 fi
@@ -47,9 +47,9 @@ chown -R "$USER:$USER" "$BACKUP_DIR"
 echo "Backup complete. Archives moved to $BACKUP_DIR, and ownership changed to $USER:$USER."
 
 # Call API to pick up
-curl --location 'https://backups.rigslab.com/backup' \
+curl --location \"$API_URL/backup\" \
 --header "Content-Type: application/json" \
---header "Authorization: Bearer $BACKUP_API_TOKEN" \
+--header "Authorization: Bearer $API_TOKEN" \
 --data "{
     \"remote_user\": \"$USER\",
     \"remote_host\": \"$HOST\",
