@@ -51,6 +51,7 @@ echo "Backup complete. Archives moved to $BACKUP_DIR, and ownership changed to $
 ENDPOINT="/backup"
 FULL_URL="${API_URL}${ENDPOINT}"
 
+echo "Sending backup to backup server"
 curl --location "$FULL_URL" \
 --header "Content-Type: application/json" \
 --header "Authorization: Bearer $API_TOKEN" \
