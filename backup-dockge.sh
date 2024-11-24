@@ -25,7 +25,7 @@ for dir in "$STACKS_DIR"/*; do
     if [ -d "$dir" ]; then
         # Get directory name without path
         dir_name=$(basename "$dir")
-
+        mkdir -p "$BACKUP_DIR/$dir_name"
         # If the directory is "fireshare", exclude the "videos" folder from the archive
         if [ "$dir_name" == "fireshare" ]; then
             tar -czf "$BACKUP_DIR/$dir_name/${dir_name}_${TIMESTAMP}.tar.gz" \
