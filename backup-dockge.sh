@@ -39,7 +39,8 @@ done
 
 # Archive /opt/dockge directory
 if [ -d "$DOCKGE_DIR" ]; then
-    tar -czf "$BACKUP_DIR/dockge_${TIMESTAMP}.tar.gz" -C "$(dirname "$DOCKGE_DIR")" "$(basename "$DOCKGE_DIR")"
+    mkdir -p "$BACKUP_DIR/dockge"
+    tar -czf "$BACKUP_DIR/dockge/dockge_${TIMESTAMP}.tar.gz" -C "$(dirname "$DOCKGE_DIR")" "$(basename "$DOCKGE_DIR")"
 fi
 
 # Change ownership of local-stack and its contents
