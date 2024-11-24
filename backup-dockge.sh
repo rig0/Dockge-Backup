@@ -59,3 +59,11 @@ curl --location "$FULL_URL" \
     \"remote_folder\": \"$BACKUP_DIR\",
     \"local_folder\": \"$NAS_DIRECTORY\"
 }"
+
+# Check if curl succeeded
+if [ $? -eq 0 ]; then
+    echo "Backup succeeded. Deleting local backups at $BACKUP_DIR"
+    rm -R $BACKUP_DIR
+else
+    echo "Backup failed. Preserving local backups"
+fi
