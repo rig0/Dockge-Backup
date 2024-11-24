@@ -20,6 +20,7 @@ TIMESTAMP=$(date +"%Y_%j_%H%M%S") # Year_DayOfYear_Time
 mkdir -p "$BACKUP_DIR"
 
 # Archive each directory in /opt/stacks/*
+echo "Backing up $STACKS_DIR"
 for dir in "$STACKS_DIR"/*; do
     if [ -d "$dir" ]; then
         # Get directory name without path
