@@ -28,11 +28,11 @@ for dir in "$STACKS_DIR"/*; do
 
         # If the directory is "fireshare", exclude the "videos" folder from the archive
         if [ "$dir_name" == "fireshare" ]; then
-            tar -czf "$BACKUP_DIR/${dir_name}_${TIMESTAMP}.tar.gz" \
+            tar -czf "$BACKUP_DIR/$dir_name/${dir_name}_${TIMESTAMP}.tar.gz" \
                 --exclude="videos" -C "$STACKS_DIR" "$dir_name"
         else
             # Create tar.gz archive for each directory normally
-            tar -czf "$BACKUP_DIR/${dir_name}_${TIMESTAMP}.tar.gz" -C "$STACKS_DIR" "$dir_name"
+            tar -czf "$BACKUP_DIR/$dir_name/${dir_name}_${TIMESTAMP}.tar.gz" -C "$STACKS_DIR" "$dir_name"
         fi
     fi
 done
